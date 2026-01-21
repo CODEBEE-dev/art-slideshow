@@ -13,8 +13,10 @@
     - [Development Server](#development-server)
     - [Production](#production)
     - [GitHub Pages 배포](#github-pages-배포)
-      - [배포 방법](#배포-방법)
-      - [주의사항](#주의사항)
+      - [방법 1: 간단한 배포 (이미 빌드된 경우)](#방법-1-간단한-배포-이미-빌드된-경우)
+      - [방법 2: 자동 배포 (GitHub Actions)](#방법-2-자동-배포-github-actions)
+        - [배포 방법](#배포-방법)
+        - [주의사항](#주의사항)
 
 ## Overview
 
@@ -114,9 +116,27 @@ bun run preview
 
 ### GitHub Pages 배포
 
+이 프로젝트는 GitHub Pages에 배포할 수 있습니다. 두 가지 방법이 있습니다:
+
+#### 방법 1: 간단한 배포 (이미 빌드된 경우)
+
+이미 `npm run build`로 빌드했다면, 다음 명령어로 바로 배포할 수 있습니다:
+
+```bash
+# gh-pages 패키지 설치 (처음 한 번만)
+npm install --save-dev gh-pages
+
+# 배포 실행
+npm run deploy
+```
+
+이 명령어는 `dist` 폴더의 내용을 `gh-pages` 브랜치에 푸시하여 GitHub Pages에 배포합니다.
+
+#### 방법 2: 자동 배포 (GitHub Actions)
+
 이 프로젝트는 GitHub Pages에 자동으로 배포되도록 설정되어 있습니다.
 
-#### 배포 방법
+##### 배포 방법
 
 1. **GitHub 리포지토리 생성**
    - GitHub에서 새 리포지토리를 생성합니다
@@ -132,17 +152,21 @@ bun run preview
    git push -u origin main
    ```
 
-3. **GitHub Pages 설정**
+3. **GitHub Pages 설정 (중요!)**
    - GitHub 리포지토리 페이지로 이동
-   - Settings → Pages 메뉴로 이동
-   - Source를 "GitHub Actions"로 선택
-   - 저장 후 자동으로 배포가 시작됩니다
+   - **Settings** → **Pages** 메뉴로 이동
+   - **Source** 섹션에서 **"GitHub Actions"**를 선택
+   - **Save** 버튼을 클릭하여 저장
+   - ⚠️ 이 단계를 먼저 완료해야 GitHub Actions workflow가 정상적으로 작동합니다
 
 4. **배포 확인**
-   - Actions 탭에서 배포 진행 상황을 확인할 수 있습니다
+   - **Actions** 탭에서 배포 진행 상황을 확인할 수 있습니다
+   - 첫 번째 workflow 실행이 완료되면 자동으로 배포가 시작됩니다
    - 배포가 완료되면 `https://YOUR_USERNAME.github.io/YOUR_REPO_NAME/`에서 사이트를 확인할 수 있습니다
+   - 배포에는 몇 분 정도 소요될 수 있습니다
 
-#### 주의사항
+##### 주의사항
 
 - 리포지토리 이름이 `galleria-slideshow`가 아닌 경우, `vite.config.ts` 파일의 `base` 값을 리포지토리 이름에 맞게 수정해야 합니다
 - 예: 리포지토리 이름이 `my-gallery`인 경우 → `base: '/my-gallery/'`
+- 방법 1을 사용하는 경우, GitHub 리포지토리 Settings → Pages에서 Source를 "Deploy from a branch"로 설정하고 Branch를 "gh-pages"로 선택해야 합니다
