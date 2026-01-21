@@ -1,13 +1,12 @@
 <script lang="ts" setup>
-import SocialItem from "@components/SocialItem.vue";
-import { paintings, socials } from "@data/app-data";
+import { paintings } from "@data/app-data";
 import { useRouter } from "vue-router";
 import GalleryImage from "./GalleryImage.vue";
 
 const router = useRouter();
 
 const startSlideShow = () => {
-  router.push({ name: "Painting", params: { name: "Starry Night" } });
+  router.push({ name: "Painting", params: { name: paintings[0].name } });
 };
 
 const handlePaintingClick = (name: string) => {
@@ -34,15 +33,8 @@ const handlePaintingClick = (name: string) => {
     </section>
     <footer>
       <div class="text-center mt-4">
-        <ul class="social-icons">
-          <li v-for="social in socials" :key="social.name" class="group">
-            <SocialItem :url="social.url" :aria="social.aria">
-              <component :is="social.name"></component
-            ></SocialItem>
-          </li>
-        </ul>
         <span class="font-semibold text-black">
-          &copy;2024 Anneris E. Wong Jorge
+          &copy;CodeBridgeAI
         </span>
       </div>
     </footer>

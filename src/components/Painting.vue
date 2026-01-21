@@ -20,11 +20,40 @@ const stopSlideshow = ref(false);
 const { height } = useElementSize(title);
 const { width } = useElementSize(el);
 
+// 영어 이름을 한국어 이름으로 매핑
+const nameMapping: Record<string, string> = {
+  "Starry Night": "별이 빛나는 밤",
+  "The Storm on the Sea of Galilee": "갈릴리 바다의 폭풍",
+  "Lady with an Ermine": "담비를 안은 여인",
+  "The Boy in the Red Vest": "빨간 조끼를 입은 소년",
+  "Girl with a Pearl Earring": "진주 귀걸이를 한 소녀",
+  "The Great Wave off Kanagawa": "가나가와 해변의 큰 파도",
+  "The Night Café": "밤의 카페",
+  "Arnolfini Portrait": "아르놀피니 부부의 초상",
+  "Guernica": "게르니카",
+  "Van Gogh self-portrait": "반 고흐 자화상",
+  "Mona Lisa": "모나리자",
+  "Penitent Magdalene": "회개하는 막달레나",
+  "The Sleeping Gypsy": "잠자는 집시",
+  "The Basket of Apples": "사과 바구니",
+  "The Swing": "그네",
+};
+
+const decodedName = computed(() => {
+  const name = currentRoute.params.name;
+  if (typeof name === 'string') {
+    const decoded = decodeURIComponent(name);
+    // 영어 이름이면 한국어 이름으로 변환
+    return nameMapping[decoded] || decoded;
+  }
+  return name;
+});
+
 const item = computed(() =>
-  paintings.find((x) => x.name === currentRoute.params.name)
+  paintings.find((x) => x.name === decodedName.value)
 );
 const itemIndex = computed(() =>
-  paintings.findIndex((x) => x.name === currentRoute.params.name)
+  paintings.findIndex((x) => x.name === decodedName.value)
 );
 const isWider = computed(() => width.value > 1349);
 const isSmaller = computed(() => width.value < 656);

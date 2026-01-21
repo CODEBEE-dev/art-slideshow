@@ -4,9 +4,15 @@ import { useRoute } from "vue-router";
 
 const currentRoute = useRoute();
 
-const isStarryNight = computed(
-  () => currentRoute.params.name === "Starry Night"
-);
+const isStarryNight = computed(() => {
+  const name = currentRoute.params.name;
+  if (typeof name === 'string') {
+    const decodedName = decodeURIComponent(name);
+    // 첫 번째 그림인지 확인 (한국어 이름: "별이 빛나는 밤" 또는 영어 이름: "Starry Night")
+    return decodedName === "별이 빛나는 밤" || decodedName === "Starry Night";
+  }
+  return false;
+});
 const buttonColor = computed(() => (isStarryNight.value ? "#E5E5E5" : "#000"));
 </script>
 

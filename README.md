@@ -1,18 +1,15 @@
-# Frontend Mentor - Galleria slideshow site solution
+# Galleria slideshow site solution
 
 ## Table of contents
 
-- [Frontend Mentor - Galleria slideshow site solution](#frontend-mentor---galleria-slideshow-site-solution)
+- [Galleria slideshow site solution](#galleria-slideshow-site-solution)
   - [Table of contents](#table-of-contents)
   - [Overview](#overview)
     - [The challenge](#the-challenge)
     - [Screenshot](#screenshot)
-    - [Links](#links)
-  - [My process](#my-process)
     - [Built with](#built-with)
-  - [Author](#author)
   - [essentials](#essentials)
-    - [Setup](#setup)
+      - [Setup](#setup)
     - [Development Server](#development-server)
     - [Production](#production)
 
@@ -30,13 +27,6 @@ Users should be able to:
 
 ![Galleria Slideshow site image](image.png)(./screenshot.jpg)
 
-### Links
-
-- Solution URL: [galleria-slideshow](https://github.com/Wong0790/galleria-slideshow)
-- Live Site URL: [wong0790-galleria-slideshow.netlify.app](https://wong0790-galleria-slideshow.netlify.app)
-
-## My process
-
 ### Built with
 
 - Semantic HTML5 markup
@@ -46,12 +36,6 @@ Users should be able to:
 - [Tailwindcss](https://tailwindcss.com/) - For styles
 - [Vue.js](https://vuejs.org/) - Javascript framework
 - [Vite.js](https://vitejs.dev) - Development environment
-
-## Author
-
-- Frontend Mentor - [@Wong0790](https://www.frontendmentor.io/profile/Wong0790)
-- Linkedin - [Anneris Wong Jorge](https://www.linkedin.com/in/anne-wong0790)
-- Github - [Anneris Wong Jorge](https://github.com/Wong0790)
 
 ## essentials
 
